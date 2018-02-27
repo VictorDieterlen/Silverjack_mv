@@ -1,9 +1,7 @@
 <?php
     function play(){
-        // generate deck
         $sortedDeck = genDeck();
         
-        // shuffle deck
         $deck = deckShuffle($sortedDeck);
         echo "<div class='containerTitle'>";
         echo "<p>PLAYER 1:</p>";
@@ -12,51 +10,44 @@
         echo "<p>PLAYER 4:</p>";
         echo "</div>";
             
-        // deal player 1; return-> the deck, player 1 hand, and the sum of the hand
         $dealp1= getHand($deck);
         $deck = $dealp1["deck"];
         $p1 = $dealp1["hand"];
         $p1Sum = $dealp1["sum"];
-        echo "<div class = 'container1'>";
+        echo "<div class = 'carte1'>";
         displayHand("1",$p1);
         echo "</div>";
             
-        // deal player 2...
         $dealp2= getHand($deck);
         $deck = $dealp2["deck"];
         $p2 = $dealp2["hand"];
         $p2Sum = $dealp2["sum"];
-        echo "<div class = 'container2'>";
+        echo "<div class = 'carte2'>";
         displayHand("2",$p2);
         echo "</div>";
             
-        // deal player 3...
         $dealp3= getHand($deck);
         $deck = $dealp3["deck"];
         $p3 = $dealp3["hand"];
         $p3Sum = $dealp3["sum"];
-        echo "<div class = 'container3'>";
+        echo "<div class = 'carte3'>";
         displayHand("3",$p3);
         echo "</div>";
         
-        // deal player 4...
         $dealp4 = getHand($deck);
         $deck = $dealp4["deck"];
         $p4 = $dealp4["hand"];
         $p4Sum = $dealp4["sum"];
-        echo "<div class = 'container4'>";
+        echo "<div class = 'carte4'>";
         displayHand("4",$p4);
         echo "</div>";
         
-        // call "getWinner" with an array of each players hand sum
-        // returns winner and total points
         $players = array($p1Sum,$p2Sum,$p3Sum,$p4Sum);
         $results = getWinner($players);
         $winner = $results["winner"];
         $winnerPoints = $results["total"];
         displayWinner($winner,$winnerPoints);
         
-        // display points 
         echo "<div class='containerPoints'>";
         echo "<p>$p1Sum</p>";
         echo "<p>$p2Sum</p>";
